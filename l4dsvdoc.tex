@@ -1,0 +1,137 @@
+%--------------------------------------------------
+% Survival Guide
+%--------------------------------------------------
+\documentclass[letterpaper,11pt]{report}
+
+%--------------------------------------------------
+% Declaration section
+%--------------------------------------------------
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage[pdfauthor={GuyGuy}, pdftitle={Survival Guide}, pdfsubject={Software Manual}, pdflang={English}]{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{textcomp}
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{ccaption}
+\usepackage{times}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{url}
+\usepackage[hyphenbreaks]{breakurl}
+%\usepackage{mnsymbol}
+\usepackage{tikz}
+\usepackage{enumitem}
+
+\setlist{nolistsep}
+
+\hypersetup{linktocpage=true,colorlinks=false,linkcolor=blue,citecolor=blue,pdfpagemode=UseNone,pdfstartview={XYZ 1000 1000 1}}
+
+% Change the format of a figure caption
+% For more options see the package documentation
+\captionnamefont{\bfseries}
+\captiontitlefont{\small}
+\captiondelim{ --- }
+\hangcaption
+\renewcommand{\figurename}{Figure}
+
+\renewcommand{\thesubfigure}{\thefigure.\arabic{subfigure}}
+\makeatletter
+\renewcommand{\p@subfigure}{}
+\renewcommand{\@thesubfigure}{\thesubfigure:\hskip\subfiglabelskip}
+\makeatother
+
+\hypersetup{linktocpage=true,colorlinks=false,linkcolor=blue,citecolor=blue,pdfpagemode=UseNone,pdfstartview={XYZ 1000 1000 1}}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+ 
+\lstset{ %
+  basicstyle=\ttfamily \footnotesize,           % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add a comment within your code
+  morekeywords={*,...}               % if you want to add more keywords to the set
+}
+
+%--------------------------------------------------
+% Headings
+%--------------------------------------------------
+\fancypagestyle{plain}{
+\fancyhead{} % clear all header fields
+\fancyhead[LO,RE]{\normalsize \slshape Left 4 Dead Survival Guide}
+\fancyhead[RO,LE]{\normalsize \slshape \leftmark}
+
+\fancyfoot{} % clear all footer fields
+\fancyfoot[LE,RO]{\normalsize \thepage\ of \pageref*{LastPage}} % insert page numbers
+\renewcommand{\headrulewidth}{0.7pt}
+\renewcommand{\footrulewidth}{0.7pt}
+}
+
+\renewcommand{\sectionmark}[1]{\markboth{\thesection.\ #1}}
+
+\setcounter{tocdepth}{2}
+
+%--------------------------------------------------
+% Document Environment
+%--------------------------------------------------
+\begin{document}
+
+\pagenumbering{roman}
+\begin{titlepage}
+\begin{flushright}
+\footnotesize
+Written by: \texttt{guyguy}
+\today
+\end{flushright}
+
+\vspace*{\fill}
+\begin{center}
+\begin{tikzpicture}
+	\draw (0, 0) node[align=center, inner sep=0] {\includegraphics[width=\columnwidth]{cover}};
+	\draw (0, 1) node[align=center] {\textsc{\huge \color{White} Left 4 Dead Survival Guide}};
+\end{tikzpicture}
+\end{center}
+%\tableofcontents
+\vspace*{\fill}
+\end{titlepage}
+\newpage
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\tableofcontents
+%\listoftables
+%\listoffigures
+%\newpage
+
+\pagestyle{plain}
+\input{intro.tex}
+\input{main.tex} 
+\input{main2.tex} 
+\bibliographystyle{IEEEtran}
+\bibliography{./refs}
+
+%\marginpar{\centering $\diamondtimes$}
+\end{document}
