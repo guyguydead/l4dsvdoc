@@ -15,7 +15,7 @@
 \usepackage{textcomp}
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[margin=1in]{geometry}
+\usepackage[letterpaper, margin=1in]{geometry}
 \usepackage{ccaption}
 \usepackage{times}
 \usepackage{fancyhdr}
@@ -25,6 +25,11 @@
 %\usepackage{mnsymbol}
 \usepackage{tikz}
 \usepackage{enumitem}
+%\usepackage{natbib}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{pdflscape}
+\usepackage[absolute]{textpos}
+\usepackage{footnote}
 
 \setlist{nolistsep}
 
@@ -76,6 +81,9 @@
   morekeywords={*,...}               % if you want to add more keywords to the set
 }
 
+\renewcommand\bibname{Links}
+
+
 %--------------------------------------------------
 % Headings
 %--------------------------------------------------
@@ -93,6 +101,22 @@
 \renewcommand{\sectionmark}[1]{\markboth{\thesection.\ #1}}
 
 \setcounter{tocdepth}{2}
+
+
+
+\fancypagestyle{lscape}{% 
+\fancyhf{} % clear all header and footer fields 
+\fancyfoot[LE]{%
+\begin{textblock}{20}(1,5){\rotatebox{90}{\leftmark}}\end{textblock}
+\begin{textblock}{1}(13,10.5){\rotatebox{90}{\thepage}}\end{textblock}}
+\fancyfoot[LO] {%
+\begin{textblock}{1}(13,10.5){\rotatebox{90}{\thepage}}\end{textblock}
+\begin{textblock}{20}(1,13.25){\rotatebox{90}{\rightmark}}\end{textblock}}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}}
+
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
 
 %--------------------------------------------------
 % Document Environment
@@ -126,12 +150,14 @@ Written by: \texttt{guyguy}
 %\listoffigures
 %\newpage
 
+\bibliographystyle{IEEEtran}
 \pagestyle{plain}
 \input{intro.tex}
 \input{main.tex} 
 \input{main2.tex} 
-\bibliographystyle{IEEEtran}
-%\bibliography{./refs}
+\input{appendix.tex}
+
+\bibliography{./refs}
 
 %\marginpar{\centering $\diamondtimes$}
 \end{document}
